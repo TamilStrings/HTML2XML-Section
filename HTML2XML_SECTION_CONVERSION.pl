@@ -1,7 +1,7 @@
 
 
 $_='
-<h1>Heading1</h1>
+
 <p>START</p>
 <h3>Heading3</h3>
 <p>Skip H2</p>
@@ -41,6 +41,7 @@ sub HTML2XML_SECTION
 {
 	my ($data, $SecCount, $MaxLevel, %sec) = (shift, 1, 6);
 
+	$data= "<h1\/>\n".$data if($data!~/^\s*<h1/si);
 	$data=~s/<(h\d)\/>/<$1><\/$1>/sgi;
 	while($data=~/<h(\d)((?:(?!<h\d).)*?)<h(\d)/sgi)
 	{
